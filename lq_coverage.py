@@ -457,7 +457,7 @@ class LqCoverage:
         ### read score after size binning.
         subplot  = self.__gen_boxplot_length_vs_coverage(interval)
         bin_size = self.df.groupby('Binned read length').size()
-        boundary_reliable_bins = np.where(bin_size >=  LqCoverage.LENGTH_BIN_THRESHOLD)[0]
+        boundary_reliable_bins = np.where(bin_size >=  min(max(bin_size),LqCoverage.LENGTH_BIN_THRESHOLD) )[0]
         xmin, xmax = plt.gca().get_xlim()
         dmin = boundary_reliable_bins.min()
         dmax = boundary_reliable_bins.max()
